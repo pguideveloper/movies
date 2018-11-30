@@ -9,6 +9,39 @@ app.get('/', (req, res) => {
 })
 
 app.get('/api/v1', (req, res) => {
+    let url = 'http://www.adorocinema.com/filmes/numero-cinemas/'; 
+    
+
+    request(url, (error, response, html) => {
+        if (!error) {
+            
+            let $ = cheerio.load(html)
+            let result = []; 
+
+            $('.mdl').each((i, element) => {
+                let movie       = $(element)
+                let title       = movie.find('.meta').find('.meta-title').find('a').text()
+                let date        = movie.find('.meta').find('.meta-body').find('.meta-body-item').find('.date').text()
+                let thumb       = movie.find('.card').find('.thumbnail').find('.thumbnail-container').find('img').data('src')
+                let synopsis    = movie.find('synopsis').find('.content-txt').text()
+                console.log(thumb)
+                result.push({
+                    'title'     : title,
+                    'date'      : date,
+                    'thumb'     : thumb, 
+                    'synopsis'  : synopsis
+
+                })
+            })
+
+    
+            res.header("Content-Type",'application/json');
+            res.send(JSON.stringify(result, null, 4));
+        }
+    })
+})
+
+app.get('/api/v2', (req, res) => {
     let url = 'http://www.centerplex.com.br/cinema/647/serramar-shopping.html'
     let sinopse = "http://www.centerplex.com.br/"
 
@@ -39,8 +72,9 @@ app.get('/api/v1', (req, res) => {
     })
 })
 
-app.listen(process.env.PORT)
+const PORT = "8081"
+app.listen(PORT)
 
-console.log('Server happens on port 8081')
+console.log('Server happens on port ' + PORT)
 
 

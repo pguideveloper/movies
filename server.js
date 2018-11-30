@@ -74,7 +74,8 @@ app.get('/api/v2', (req, res) => {
     })
 })
 
-const PORT = "8081"
+const PORT = process.env.PORT
+
 app.listen(PORT)
 
 console.log('Server happens on port ' + PORT)

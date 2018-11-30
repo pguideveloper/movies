@@ -4,6 +4,9 @@ const request   = require('request')
 const cheerio   = require('cheerio')
 const app       = express()
 
+app.get('/', (req, res) => {
+    res.send("https://caraguamoviesapi.herokuapp.com/api/v1")
+})
 
 app.get('/api/v1', (req, res) => {
     let url = 'http://www.centerplex.com.br/cinema/647/serramar-shopping.html'

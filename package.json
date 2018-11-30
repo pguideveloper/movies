@@ -1,0 +1,17 @@
+{
+  "name": "movies_api",
+  "version": "1.0.0",
+  "description": "Simple api to get movies from my city theater ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Pedro Henrique Guimarães",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
+    "request": "^2.88.0"
+  }
+}

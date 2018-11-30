@@ -23,8 +23,10 @@ app.get('/api/v1', (req, res) => {
                 let title       = movie.find('.meta').find('.meta-title').find('a').text()
                 let date        = movie.find('.meta').find('.meta-body').find('.meta-body-item').find('.date').text()
                 let thumb       = movie.find('.card').find('.thumbnail').find('.thumbnail-container').find('img').data('src')
-                let synopsis    = movie.find('synopsis').find('.content-txt').text()
-                console.log(thumb)
+                let synopsis    = movie.find('.synopsis').find('.content-txt').text()
+
+                console.log(synopsis)
+
                 result.push({
                     'title'     : title,
                     'date'      : date,

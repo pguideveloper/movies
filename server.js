@@ -39,9 +39,8 @@ app.get('/api/v1', (req, res) => {
     })
 })
 
-app.listen('8081')
+app.listen(process.env.PORT)
 
 console.log('Server happens on port 8081')
 
 
-exports = module.exports = app;
